@@ -1,24 +1,24 @@
-# README
+# Chatty
+> A Rails 5+ ActionCable Example App
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## Requirement
 
-Things you may want to cover:
+* Ruby 2.3+
+* Redis Server
 
-* Ruby version
+## Deploy
 
-* System dependencies
+Once you clone or downloaded this project, run those commands in the dir of itself:
 
-* Configuration
+```
+# install packages
+bundle install
+# setup database
+rake db:migrate
+# run redis-server
+redis-server
+# run this app(in another tty)
+rails s
+```
 
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+Then visit http://localhost:3000 to play.
