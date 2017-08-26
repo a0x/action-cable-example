@@ -11,7 +11,7 @@ Rails.application.routes.draw do
 
   get '/users/:id', to: "users#show", as: "profile"
 
-  resources :chatrooms, param: :slug
+  resources :chatrooms, param: :topic
   resources :messages
 
   # Serve websocket cable requests in-process
