@@ -5,7 +5,7 @@
 # and maximum; this matches the default thread size of Active Record.
 #
 threads_count = ENV.fetch("RAILS_MAX_THREADS") { 5 }
-app_root = Rails.root.to_s
+app_root = ENV["PWD"]
 threads threads_count, threads_count
 
 # Specifies the `port` that Puma will listen on to receive requests; default is 3000.
