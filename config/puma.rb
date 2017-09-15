@@ -5,16 +5,25 @@
 # and maximum; this matches the default thread size of Active Record.
 #
 threads_count = ENV.fetch("RAILS_MAX_THREADS") { 5 }
+app_root = Rails.root.to_s
 threads threads_count, threads_count
 
 # Specifies the `port` that Puma will listen on to receive requests; default is 3000.
 #
-port        ENV.fetch("PORT") { 3000 }
+# port        ENV.fetch("PORT") { 3000 }
 
 # Specifies the `environment` that Puma will run in.
 #
 environment ENV.fetch("RAILS_ENV") { "development" }
+environment ENV.fetch("RAILS_ENV") { "production" }
 
+bind "unix://#{app_root}/tmp/sockets/puma.sock"
+stdout_redirect "#{app_root}/log/puma.log","#{app_root}/log/puma.err.log"
+pidfile "#{app_root}/tmp/pids/puma.pid"
+state_path "#{app_root}/tmp/pids/puma.state"
+daemonize true
+activate_control_app
+preload_app!
 # Specifies the number of `workers` to boot in clustered mode.
 # Workers are forked webserver processes. If using threads and workers together
 # the concurrency of the application would be max `threads` * `workers`.
